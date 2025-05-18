@@ -25,5 +25,21 @@ export default defineConfig({
         },
       },
     },
+    target: 'esnext',
+    minify: 'esbuild',
+    cssMinify: true,
+    assetsInlineLimit: 4096,
+    chunkSizeWarningLimit: 1000,
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      '@radix-ui/react-*',
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei'
+    ],
   },
 });
