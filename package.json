@@ -86,11 +86,14 @@
     "vite": "^4.5.1"
   },
   "engines": {
-    "node": "18.x"
+    "node": "18.19.0"
   },
   "overrides": {
     "rollup": {
       "@rollup/rollup-linux-x64-gnu": "4.9.5"
     }
+  },
+  "resolutions": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
   }
 }
