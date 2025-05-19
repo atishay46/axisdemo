@@ -17,7 +17,43 @@ import RotatableSticker from '@/components/RotatableSticker';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Index = () => {
+const FEATURE_CARDS = [
+  { 
+    icon: <Rocket size={32} className="text-axis-neon-blue" />, 
+    title: 'Space Innovation',
+    description: 'Explore cutting-edge technologies shaping the future of space exploration.'
+  },
+  { 
+    icon: <Star size={32} className="text-axis-neon-purple" />, 
+    title: 'Global Experts',
+    description: 'Learn from leading figures in astronomy, astrophysics, and space engineering.'
+  },
+  { 
+    icon: <Calendar size={32} className="text-axis-neon-pink" />, 
+    title: 'Hands-on Workshops',
+    description: 'Participate in interactive sessions developing real space solutions.'
+  },
+  { 
+    icon: <Users size={32} className="text-axis-neon-blue" />, 
+    title: 'Networking',
+    description: 'Connect with industry leaders, researchers, and space enthusiasts.'
+  },
+  { 
+    icon: <Shirt size={32} className="text-axis-neon-purple" />, 
+    title: 'Exclusive Merchandise',
+    description: 'Take home limited edition AXIS 2025 branded products.'
+  },
+  { 
+    icon: <Star size={32} className="text-axis-neon-pink" />, 
+    title: 'Space Startups',
+    description: 'Discover emerging companies revolutionizing the space industry.'
+  }
+];
+
+/**
+ * Homepage component featuring animated sections and interactive elements
+ */
+const Index: React.FC = () => {
   const { toast } = useToast();
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -211,38 +247,7 @@ const Index = () => {
             </div>
             
             <div className="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { 
-                  icon: <Rocket size={32} className="text-axis-neon-blue" />, 
-                  title: 'Space Innovation',
-                  description: 'Explore cutting-edge technologies shaping the future of space exploration.'
-                },
-                { 
-                  icon: <Star size={32} className="text-axis-neon-purple" />, 
-                  title: 'Global Experts',
-                  description: 'Learn from leading figures in astronomy, astrophysics, and space engineering.'
-                },
-                { 
-                  icon: <Calendar size={32} className="text-axis-neon-pink" />, 
-                  title: 'Hands-on Workshops',
-                  description: 'Participate in interactive sessions developing real space solutions.'
-                },
-                { 
-                  icon: <Users size={32} className="text-axis-neon-blue" />, 
-                  title: 'Networking',
-                  description: 'Connect with industry leaders, researchers, and space enthusiasts.'
-                },
-                { 
-                  icon: <Shirt size={32} className="text-axis-neon-purple" />, 
-                  title: 'Exclusive Merchandise',
-                  description: 'Take home limited edition AXIS 2025 branded products.'
-                },
-                { 
-                  icon: <Star size={32} className="text-axis-neon-pink" />, 
-                  title: 'Space Startups',
-                  description: 'Discover emerging companies revolutionizing the space industry.'
-                }
-              ].map((feature, index) => (
+              {FEATURE_CARDS.map((feature, index) => (
                 <div 
                   key={index} 
                   className="feature-card glass-effect p-6 rounded-xl hover:neon-glow-blue transition-all duration-300"
@@ -250,8 +255,12 @@ const Index = () => {
                   <div className="flex justify-center mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-center">{feature.title}</h3>
-                  <p className="text-gray-400 text-center">{feature.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-center">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-400 text-center">
+                    {feature.description}
+                  </p>
                 </div>
               ))}
             </div>

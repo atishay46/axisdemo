@@ -24,6 +24,21 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const ROLE_OPTIONS = [
+  { value: 'engineer', label: 'Space Engineer' },
+  { value: 'scientist', label: 'Scientist/Researcher' },
+  { value: 'executive', label: 'Executive/Manager' },
+  { value: 'student', label: 'Student' },
+  { value: 'entrepreneur', label: 'Entrepreneur' },
+  { value: 'enthusiast', label: 'Space Enthusiast' },
+  { value: 'other', label: 'Other' },
+];
+
+const PASS_OPTIONS = [
+  { value: 'standard', label: 'Standard Pass (₹499)' },
+  { value: 'premium', label: 'Premium Pass (₹899)' },
+];
+
 const Register = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -176,13 +191,11 @@ const Register = () => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="engineer">Space Engineer</SelectItem>
-                          <SelectItem value="scientist">Scientist/Researcher</SelectItem>
-                          <SelectItem value="executive">Executive/Manager</SelectItem>
-                          <SelectItem value="student">Student</SelectItem>
-                          <SelectItem value="entrepreneur">Entrepreneur</SelectItem>
-                          <SelectItem value="enthusiast">Space Enthusiast</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          {ROLE_OPTIONS.map((role) => (
+                            <SelectItem key={role.value} value={role.value}>
+                              {role.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                       <FormMessage />
@@ -203,8 +216,11 @@ const Register = () => {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="standard">Standard Pass (₹499)</SelectItem>
-                          <SelectItem value="premium">Premium Pass (₹899)</SelectItem>
+                          {PASS_OPTIONS.map((pass) => (
+                            <SelectItem key={pass.value} value={pass.value}>
+                              {pass.label}
+                            </SelectItem>
+                          ))}
                         </SelectContent>
                       </Select>
                       <FormMessage />
